@@ -22,6 +22,11 @@ XMonad
 ------
 *XMonad* is a lightly tiling Windows Manager (WM). Written in Haskell, it's very configurable but maybe not simplest. However you don't need to know Haskell to configure it (fortunately for me).
 
+**Applications used :**
++ XMobar
++ dmenu (light app launcher bar)
++ XTerm
+
 **links :**
 + Official website : http://xmonad.org
 + Archlinux wiki : https://wiki.archlinux.org/index.php/Xmonad
