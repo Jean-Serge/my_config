@@ -3,9 +3,9 @@
 Content
 =======
 This git contains configuration files for :
-	+ vim
-	+ XMonad
-	+ XMobar
++ vim
++ XMonad
++ XMobar
 
 Vi(mproved)
 -----------
