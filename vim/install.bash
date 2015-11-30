@@ -4,7 +4,7 @@
 #	Check if the tested file exists.
 #	If yes, it will be moved into a .bak file.
 ###
-function exists
+function exist
 {
 	if [ -f $1 -o -d $1 -o -L $1 ]
 	then
@@ -12,11 +12,14 @@ function exists
 		echo "The file "$1" already exists, he'll be moved into the "$1".bak path"
 		return 1
 	fi
+
+	return 0
 }
 
 function archive
 {
-	if [ ! exists $1 ]
+	exist $1
+	if [ ! $? -eq 0 ]
 	then
 		mv $1 $1.bak
 	fi
@@ -33,6 +36,7 @@ function exists_command
 		exit 1
 	fi
 
+	return 0
 }
 
 exists_command vim
@@ -50,4 +54,4 @@ cd .vim/bundle
 git clone https://github.com/VundleVim/Vundle.vim.git ./Vundle.vim
 cd ../..
 
-echo "To finish the installation of Vundle, you have to run vim and execute 'PluginInstall'."
+vim +PluginInstall +qall
