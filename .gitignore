@@ -11,5 +11,5 @@
 .netrwhist
 
 # Vim bundle 
-vim/.vim/bundle/*
+vim/.vim/bundle/Vundle.vim
 
