@@ -9,3 +9,7 @@
 # Applications' information files
 *.errors
 .netrwhist
+
+# Vim bundle 
+vim/.vim/bundle/*
+
