@@ -7,16 +7,7 @@ This git contains configuration files for :
 + *XMonad*
 + *XMobar*
 
-# Vi(mproved)
-
-*Vim* is a very configurable and light text editor, it's base on the *vi* editor which is provided natively by almost all of the UNIX systems.
-
-## Features :
-I installed *Vundle* which is a *Vim* plugin manager. It allow you to easily install plugin for *vim*.
-
-## links :
-+ Official website : http://vim.org
-+ Vundle git : https://github.com/VundleVim/Vundle.vim
+(For further information, look at the repertory of this applications)
 
 # XMonad
 
