@@ -2,31 +2,39 @@
 
 ###
 #	Check if the tested file exists.
-#	If yes, it will be moved into a .bak file.
+#	Works with files, directory and symbolic link.
 ###
 function exist
 {
 	if [ -f $1 -o -d $1 -o -L $1 ]
 	then
-		# TODO : issue if the tested file is a non-relative symbolic link
-		echo "The file "$1" already exists, he'll be moved into the "$1".bak path"
+		echo "The file "$1" already exists."
 		return 1
 	fi
 
 	return 0
 }
 
+###
+#	Check if the file exists and archive it if yes.
+#	The file will be rename adding a .bak at the end of its name.
+###
 function archive
 {
 	exist $1
 	if [ ! $? -eq 0 ]
 	then
+		# TODO : issue if the tested file is a non-relative symbolic link
+		echo "The file "$1" already exists, he'll be moved into the "$1".bak path"
 		mv $1 $1.bak
 	fi
 
 	return 0
 }
 
+###
+#	Check if the specified command exists.
+###
 function exists_command
 {
 	command -v $1 >/dev/null
@@ -39,6 +47,10 @@ function exists_command
 	return 0
 }
 
+##########################################
+# Main
+##########################################
+
 exists_command vim
 exists_command git
 
@@ -50,8 +62,18 @@ archive $HOME/.vim
 ln -rs .vimrc $HOME/.vimrc
 ln -rs .vim $HOME/.vim
 
+# Vundle Installation
 cd .vim/bundle
-git clone https://github.com/VundleVim/Vundle.vim.git ./Vundle.vim
+exist ./Vundle.vim
+if [ $? -eq 0 ]
+then
+	git clone https://github.com/VundleVim/Vundle.vim.git ./Vundle.vim
+else
+	cd Vundle.vim
+	git pull
+	cd ..
+fi
+	
 cd ../..
-
+# Run Vim and install all plugins.
 vim +PluginInstall +qall
