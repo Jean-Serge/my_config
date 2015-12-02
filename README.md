@@ -12,14 +12,15 @@ At first I created this repo for 2 reasons :
 If you want to advise me (about git or about any configuration), you are welcome. You can contact me on my github e-mail address.
 
 
-# List of Content
+# List of Applications used
 
-This git contains configuration files for :
 + *vim*
 + *XMonad*
 + *XMobar*
++ *dmenu*
++ *livedown*
 
-(For further information, look at the repertory of this applications)
+*(For further information, look at the repertory of this applications or in one of the next sections)*
 
 # XMonad
 
@@ -40,6 +41,7 @@ This git contains configuration files for :
 Livedown is a tool for Markdown-file preview in browser. You just have to start livedown specifying it your file and your browser. It will open this file in your browser and actualize the page each time you save the file.
 
 ## Installation
+
 + Install *npm* with your package manager
 + Install *livedown* : * **npm install -g livedown** *
 
