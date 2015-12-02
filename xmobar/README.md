@@ -26,6 +26,8 @@ OR
 
 	./install.bash
 
+*Note that you can just use the default XMobar configuration*
+
 ## Configuration
 
 *This section should be filled in the future, by now I don't have really configured XMobar.*
