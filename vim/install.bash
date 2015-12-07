@@ -24,9 +24,15 @@ function archive
 	exist $1
 	if [ ! $? -eq 0 ]
 	then
-		# TODO : issue if the tested file is a non-relative symbolic link
-		echo "The file "$1" already exists, he'll be moved into the "$1".bak path"
-		mv $1 $1.bak
+		exist $1.bak
+		if [ ! $? -eq 0 ]
+		then
+			# TODO : issue if the tested file is a non-relative symbolic link
+			echo "The file "$1" already exists, he'll be moved into the "$1".bak path"
+			mv $1 $1.bak
+		else
+			rm $1
+		fi
 	fi
 
 	return 0
@@ -59,8 +65,8 @@ exists_command git
 archive $HOME/.vimrc
 archive $HOME/.vim
 
-ln -rs .vimrc $HOME/.vimrc
-ln -rs .vim $HOME/.vim
+ln -f --backup=off -rs .vimrc $HOME/.vimrc
+ln -f --backup=off -rs .vim $HOME/.vim
 
 # Vundle Installation
 cd .vim/bundle
