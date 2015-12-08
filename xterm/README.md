@@ -5,12 +5,16 @@ I have choose it because it is configurable enough for me and I don't really see
 
 ## Requirement
 
-You need (guess what) *xterm* and *xrdb* for install this configuration.
++ You need (guess what) *xterm* and *xrdb* for install this configuration.
 
 
 	# On ArchLinux
 	pacman -S xterm xorg-xrdb
 
++ You need to install terminus font for using this script.
+
+	# On ArchLinux
+	pacman -S terminus-font
 
 ## Installation
 
