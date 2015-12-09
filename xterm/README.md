@@ -11,11 +11,6 @@ I have choose it because it is configurable enough for me and I don't really see
 	# On ArchLinux
 	pacman -S xterm xorg-xrdb
 
-+ You need to install terminus font for using this script.
-
-	# On ArchLinux
-	pacman -S terminus-font
-
 ## Installation
 
 Run
