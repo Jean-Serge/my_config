@@ -17,7 +17,7 @@ Run
 
 	./install.bash
 
-OR directly
+OR directly (in the xterm directory)
 
 	xrdb -merge .Xresources
 
@@ -28,8 +28,8 @@ OR directly
 	+ black background
 	
 + Change font *(I found default font unreadable)*:
-	+ Font : **Deja Vu Sans Mono**
-	+ Size : **12**
+	+ Font : **Deja Vu Mono**
+	+ Size : **13**
 	+ Anti-Aliasing : **true**
 
 ## Links
