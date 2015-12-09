@@ -1,5 +1,5 @@
-xterm*faceName:         terminus
-xterm*faceSize:         12
+xterm*faceName:         DejaVu Mono
+xterm*faceSize:         13
 xft.antialias:		true
 
 ! Set a white foreground text on black background
