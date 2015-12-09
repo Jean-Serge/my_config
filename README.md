@@ -29,7 +29,7 @@ If you want to advise me (about git or about any configuration), you are welcome
 ## Applications used :
 + XMobar
 + dmenu (light app launcher bar)
-+ XTerm
++ XTerm (see the XTerm part of the README)
 
 ## Links :
 + Official website : http://xmonad.org
@@ -49,3 +49,30 @@ Livedown is a tool for Markdown-file preview in browser. You just have to start 
 + * **livedown start README.md --open --browser firefox** *
 + * **vim README.md** *
 
+# XTerm
+
+XTerm is the (very light) default terminal emulator for *Xorg* Window System.
+I have choose it because it is configurable enough for me and I don't really see diference between it and other terminal emulator.
+
+The XTerm configuration is directly made by passing parameters to the *Term* field in XMonad configuration.
+  
+## Requirement
+
++ You need (guess what) *xterm* 
+
+
+	# On ArchLinux
+	pacman -S xterm xorg-xrdb
+
+## Configuration
+
++ Colors : 
+	+ white foreground
+	+ black background
+	
++ Font :
+	+ Font : **Deja Vu Mono**
+	+ Size : **13**
+
+## Links
++ ArchLinux-XTerm page : https://wiki.archlinux.org/index.php/Xterm
