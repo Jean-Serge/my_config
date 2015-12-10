@@ -65,11 +65,13 @@ exists_command git
 archive $HOME/.vimrc
 archive $HOME/.vim
 
-ln -f --backup=off -rs .vimrc $HOME/.vimrc
-ln -f --backup=off -rs .vim $HOME/.vim
+cp .vimrc $HOME/.vimrc
+cp -r .vim $HOME/.vim
 
 # Vundle Installation
-cd .vim/bundle
+wd=$PWD
+
+cd $HOME/.vim/bundle
 exist ./Vundle.vim
 if [ $? -eq 0 ]
 then
@@ -80,6 +82,6 @@ else
 	cd ..
 fi
 	
-cd ../..
+cd $wd
 # Run Vim and install all plugins.
 vim +PluginInstall +qall

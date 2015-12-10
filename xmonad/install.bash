@@ -40,5 +40,5 @@ function archive
 
 archive $HOME/.xmonad
 
-ln -rs .xmonad $HOME/.xmonad
+cp -r .xmonad $HOME/.xmonad
 xmonad --recompile && xmonad --restart

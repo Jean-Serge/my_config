@@ -11,4 +11,4 @@ then
 fi
 
 # TODO : check the location from where the script is launch (see Issue #1 on github)
-ln -rs .xmobarrc $path
+cp .xmobarrc $path
