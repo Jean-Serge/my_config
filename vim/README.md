@@ -15,7 +15,7 @@ You can simply run my script :
 
 	bash vim/install.bash
 
-This script will create symbolic links from this repo to your $HOME repertory.
+This script will the vim configuration to your $HOME repertory.
 Then it will clone the Vundle repo and automatically install it into *vim*.
 
 **You can also just use some of those files for making your own custom configuration, mine is just an example.**
