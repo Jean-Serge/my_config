@@ -3,8 +3,7 @@
 *XMobar* is a minimalistic status bar written in Haskell. It was first designed to work with the Window Manager *XMonad* (also used in this project).
 In this git, you will only find the XMobar configuration file (**.xmobarrc**) and a bash script (**install.bash**) for configure it.
 
-My configuration is not very personnal, honnestly I just have reproduce another file found on the internet (in fact I am not even able to find where).
-In the future I wille make my own configuration so I could explain it and give you some tips.
+My configuration is very simple, it prints your current window, your resources state (CPU, Swap and RAM) and the current date.
 
 ## Requirements
 
