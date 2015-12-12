@@ -11,6 +11,11 @@ At first I created this repo for 2 reasons :
 
 If you want to advise me (about git or about any configuration), you are welcome. You can contact me on my github e-mail address.
 
+# Installation
+
+Simply run 
+
+	./install.bash
 
 # List of Applications used
 

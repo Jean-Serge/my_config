@@ -6,7 +6,7 @@ In this git, you will only find the XMobar configuration file (**.xmobarrc**) an
 My configuration is not very personnal, honnestly I just have reproduce another file found on the internet (in fact I am not even able to find where).
 In the future I wille make my own configuration so I could explain it and give you some tips.
 
-## Installation
+## Requirements
 
 + I you haven't did it yet, install xmobar :
 
@@ -19,12 +19,11 @@ OR
 	# On Debian-based-Linux (including Ubuntu)
 	apt-get install xmobar
 
-*Note that you don't really need to have install it to run the script. In this case xmobar will be automatically configured at installation.*
+## Installation
 
-+ Then run (on the **xmobar** directory of the project) :
+*(see the root **install.bash** script)*
 
-
-	./install.bash
+The script will simply copy the *.xmobarrc* in your home directory.
 
 *Note that you can just use the default XMobar configuration*
 

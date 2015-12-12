@@ -11,13 +11,12 @@ This repo contains configuration files for *vim*. It will install *Vundle*, a bu
 
 ## Installation
 
-You can simply run my script :
+(see the root **install.bash** file)
 
-	bash vim/install.bash
-
-This script will the vim configuration to your $HOME repertory.
+This script will copy the vim configuration to your $HOME repertory.
 Then it will clone the Vundle repo and automatically install it into *vim*.
 
+**Warning : this script will change all your vim configuration and potentially delete it!**
 **You can also just use some of those files for making your own custom configuration, mine is just an example.**
  
 ## Configuration
