@@ -29,9 +29,10 @@ function archive
 		then
 			# TODO : issue if the tested file is a non-relative symbolic link
 			echo "The file "$1" already exists, he'll be moved into the "$1".bak path"
+			rm -r $1.bak
 			mv $1 $1.bak
 		else
-			rm $1
+			mv $1 $1.bak
 		fi
 	fi
 
