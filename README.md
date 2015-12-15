@@ -50,9 +50,12 @@ Livedown is a tool for Markdown-file preview in browser. You just have to start 
 + Install *npm* with your package manager
 + Install *livedown* : * **npm install -g livedown** *
 
-## Utilisation example :
-+ * **livedown start README.md --open --browser firefox** *
-+ * **vim README.md** *
+## Example
++ ***livedown start README.md --open --browser firefox***
++ ***vim README.md***
+
+## Links
++ npm website : https://www.npmjs.com/package/livedown
 
 # XTerm
 
@@ -63,8 +66,7 @@ The XTerm configuration is directly made by passing parameters to the *Term* fie
   
 ## Requirement
 
-+ You need (guess what) *xterm* 
-
+You need (obviously) *xterm* 
 
 	# On ArchLinux
 	pacman -S xterm xorg-xrdb
