@@ -5,9 +5,11 @@ In this git, you will only find the XMobar configuration file (**.xmobarrc**) an
 
 My configuration is very simple, it prints your current window, your resources state (CPU, Swap and RAM) and the current date.
 
+Apparently, it's impossible to automatically run XMobar on multiple screen. It may be possible to run 2 session of XMobar it's not what I expected.
+
 ## Requirements
 
-+ I you haven't did it yet, install xmobar :
+I you haven't did it yet, install xmobar :
 
 
 	# On ArchLinux
