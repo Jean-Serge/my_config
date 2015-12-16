@@ -23,7 +23,7 @@ import qualified Data.Map        as M
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal      = "xterm -fa 'DejaVu Mono' -fs 13 -bg rgb:00/00/00 -fg rgb:FF/FF/FF/FF"
+myTerminal      = "xterm -fa 'DejaVu Mono' -fs 13 -bg black -fg grey"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
