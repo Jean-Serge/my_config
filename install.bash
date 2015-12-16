@@ -3,7 +3,7 @@
 # TODO : check the location from where the script is launch (see Issue #1 on github)
 
 XTERM='xterm ttf-dejavu'
-XMONAD='xmonad dmenu xmobar'
+XMONAD='xmonad xmonad-contrib dmenu xmobar'
 VIM='vim'
 LIVEDOWN='livedown rpm'
 
