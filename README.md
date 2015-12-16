@@ -11,11 +11,25 @@ At first I created this repo for 2 reasons :
 
 If you want to advise me (about git or about any configuration), you are welcome. You can contact me on my github e-mail address.
 
+# Requirements
+
+As the **install.bash** script automatically install the needed packages, it will only work with the following distributions (others should manually install the specified packages) :
++ Debian
++ ArchLinux
+
+Send me a message if you want me to enable other distributions installation. 
+
+*Note that even if the script include Ubuntu specification, it will not work on it because of the missing commande **sudo**. In fact the script use the **su** command to install all the packages.
+
+
 # Installation
+
+*Warning : this script use the content the **/etc/issue** file on your system to determinate which package manager you are using. Don't modify this file in order to make the script work correctly.*
 
 Simply run 
 
 	./install.bash
+
 
 # List of Applications used
 
