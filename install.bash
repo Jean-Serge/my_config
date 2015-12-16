@@ -5,9 +5,9 @@
 XTERM='xterm ttf-dejavu'
 XMONAD='xmonad xmonad-contrib dmenu xmobar'
 VIM='vim'
-LIVEDOWN='livedown rpm'
+OTHERS='npm'
 
-ALL='git '$XTERM' '$XMONAD' '$VIM' '$LIVEDOWN
+ALL='git '$XTERM' '$XMONAD' '$VIM' '$OTHERS
 
 
 ##########################################
@@ -52,6 +52,26 @@ function archive
 # Installation functions
 ##########################################
 
+function install_packages
+{
+	echo 'Installation of all the dependancies.'
+	su -c "pacman -S $ALL"
+	echo 'All the needed packages have been installed.'
+}
+
+function full_install
+{
+	install_packages
+	echo '-----------------------'
+	install_vim
+	echo '-----------------------'
+	install_xmonad
+	echo '-----------------------'
+	install_xmobar
+	echo '-----------------------'
+	install_livedown
+}
+
 function install_vim
 {
 	echo -e 'Starting \e[34mVim\e[39m configuration.'
@@ -90,8 +110,6 @@ function install_xmobar
 	echo -e 'Starting \e[34mXMobar\e[39m configuration.'
 	cd xmobar
 
-	# We check if the XMobar configuration file exists 
-	# It will be archived if not.
 	archive $HOME/.xmobarrc
 
 	cp .xmobarrc $HOME
@@ -115,14 +133,33 @@ function install_xmonad
 	echo 'XMonad correctly configured.'
 }
 
+function install_livedown
+{
+	echo -e 'Starting \e[34mLivedown\e[39m installation.'
+	su -c "npm install -g livedown"
+	
+	if [ $? -eq 0 ]
+	then
+		echo 'Livedown correctly installed.'
+		return 0
+	else
+		echo -e '\e[31mProblem with Livedown installation.\e[39m'
+		return 1
+	fi
+}
 ##########################################
 # Main
 ##########################################
 
-install_vim
-echo '-----------------------'
-install_xmobar
-echo '-----------------------'
-install_xmonad
+#install_packages
+#echo '-----------------------'
+#install_vim
+#echo '-----------------------'
+#install_xmobar
+#echo '-----------------------'
+#install_xmonad
+#echo '-----------------------'
+#install_livedown
+full_install
 
 echo 'Installation finished.'
