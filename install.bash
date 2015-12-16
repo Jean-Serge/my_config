@@ -48,14 +48,40 @@ function archive
 #	return 0
 #}
 
+function get_package_manager
+{
+	ARCH=`cat /etc/issue | cut -f 1 -d ' '`
+	case $ARCH in
+		"Arch")
+			PM="pacman -S"
+			;;
+		"Debian")
+			PM="apt-get install"
+			;;
+		"Ubuntu")
+			PM="apt-get install"
+			;;
+		*)
+			return 1
+			;;
+	esac
+
+}
+
 ##########################################
 # Installation functions
 ##########################################
 
 function install_packages
 {
+	get_package_manager
+	if [ $? -eq 1 ]
+	then
+		echo -e "\\e[31mThere is a problem determining which package manager you're using,  so the installation cannot be done.\\e[39m"
+		return 1
+	fi
 	echo 'Installation of all the dependancies.'
-	su -c "pacman -S $ALL"
+	su -c "$PM $ALL"
 	echo 'All the needed packages have been installed.'
 }
 
