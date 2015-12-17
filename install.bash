@@ -2,12 +2,13 @@
 
 # TODO : check the location from where the script is launch (see Issue #1 on github)
 
+X='xorg-server xorg-xinit'
 XTERM='xterm ttf-dejavu'
 XMONAD='xmonad xmonad-contrib dmenu xmobar'
 VIM='vim'
-OTHERS='npm'
+OTHERS='npm git'
 
-ALL='git '$XTERM' '$XMONAD' '$VIM' '$OTHERS
+ALL=$X' '$XTERM' '$XMONAD' '$VIM' '$OTHERS
 
 
 ##########################################
@@ -156,6 +157,7 @@ function install_xmonad
 	xmonad --recompile && xmonad --restart
 
 	cd ..
+	echo 'exec xmonad' >> $HOME/.xinitrc
 	echo 'XMonad correctly configured.'
 }
 
