@@ -3,22 +3,9 @@
 *XMobar* is a minimalistic status bar written in Haskell. It was first designed to work with the Window Manager *XMonad* (also used in this project).
 In this git, you will only find the XMobar configuration file (**.xmobarrc**) and a bash script (**install.bash**) for configure it.
 
-My configuration is very simple, it prints your current window, your resources state (CPU, Swap and RAM) and the current date.
+My configuration is very simple, it prints your current window, your resources state (CPU, RAM, Network Bandwidth) and the current date.
 
 Apparently, it's impossible to automatically run XMobar on multiple screen. It may be possible to run 2 session of XMobar it's not what I expected.
-
-## Requirements
-
-I you haven't did it yet, install xmobar :
-
-
-	# On ArchLinux
-	pacman -S xmobar
-
-OR
-
-	# On Debian-based-Linux (including Ubuntu)
-	apt-get install xmobar
 
 ## Installation
 
@@ -35,3 +22,4 @@ The script will simply copy the *.xmobarrc* in your home directory.
 ## Links
 
 Official site : http://projects.haskell.org/xmobar/
+Arch-wiki page : https://wiki.archlinux.org/index.php/Xmobar
