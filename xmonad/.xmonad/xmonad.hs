@@ -225,7 +225,9 @@ myManageHook = composeAll
 -- return (All True) if the default handler is to be run afterwards. To
 -- combine event hooks use mappend or mconcat from Data.Monoid.
 --
-myEventHook = mempty
+myEventHook = mconcat
+		[ docksEventHook
+		, handleEventHook defaultConfig ]
 
 ------------------------------------------------------------------------
 -- Status bars and logging
