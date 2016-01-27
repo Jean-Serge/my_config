@@ -10,6 +10,16 @@ OTHERS='npm git'
 
 ALL=$X' '$XTERM' '$XMONAD' '$VIM' '$OTHERS
 
+##########################################
+# Options
+##########################################
+
+INSTALL_PACKAGES=0
+INSTALL_VIM=0
+INSTALL_XMOBAR=0
+INSTALL_XMONAD=0
+INSTALL_LIVEDOWN=0
+
 
 ##########################################
 # Functions
@@ -54,19 +64,60 @@ function get_package_manager
 	ARCH=`cat /etc/issue | cut -f 1 -d ' '`
 	case $ARCH in
 		"Arch")
-			PM="pacman -S"
+			PM="pacman -S "
 			;;
 		"Debian")
-			PM="apt-get install"
+			PM="apt-get install "
 			;;
 		"Ubuntu")
-			PM="apt-get install"
+			PM="apt-get install "
 			;;
 		*)
 			return 1
 			;;
 	esac
 
+}
+
+function usage
+{
+	echo -e '\e[30m\e[43mTODO\e[49m\e[39m : implement the usage function of this script.'
+}
+
+###
+#  This function parse the options given to this script.
+###
+function parse_args
+{
+	while :; do
+		case $1 in
+			-h|--help)
+				usage
+				exit 0
+				;;
+			--packages)
+				INSTALL_PACKAGES=1
+				;;
+			--vim) 	
+				INSTALL_VIM=1
+				;;
+			--xmonad) 
+				INSTALL_XMONAD=1
+				;;
+			--xmobar) 
+				INSTALL_XMOBAR=1
+				;;
+			--livedown) 
+				INSTALL_LIVEDOWN=1
+				;;
+			-a|--all) 
+				full_install				
+				;;
+			*)
+				break
+		esac
+		shift
+	done
 }
 
 ##########################################
@@ -78,7 +129,7 @@ function install_packages
 	get_package_manager
 	if [ $? -eq 1 ]
 	then
-		echo -e "\\e[31mThere is a problem determining which package manager you're using,  so the installation cannot be done.\\e[39m"
+		echo -e '\e[31mThere is a problem determining which package manager you are using, so the installation cannot be done.\e[39m'
 		return 1
 	fi
 	echo 'Installation of all the dependancies.'
@@ -88,15 +139,42 @@ function install_packages
 
 function full_install
 {
-	install_packages
+	echo -e '\e[34mStarting the complete configuration\e[39m'
+
+	install_packages || {
+		echo -e '\e[31mAn error occured during the \e[1mpackages\e[21m installation.\e[39m'
+		exit 1
+	}
+
 	echo '-----------------------'
-	install_vim
+
+	install_vim || {
+		echo -e '\e[31mAn error occured during the \e[1mvim\e[21m configuration.\e[39m'
+		exit 1
+	}
+
 	echo '-----------------------'
-	install_xmonad
+
+	install_xmobar || {
+		echo -e '\e[31mAn error occured during the \e[1mXMobar\e[21m configuration.\e[39m'
+		exit 1
+	}
+
 	echo '-----------------------'
-	install_xmobar
+
+	install_xmonad || {
+		echo -e '\e[31mAn error occured during the \e[1mXMonad\e[21m configuration.\e[39m'
+		exit 1
+	}
+
 	echo '-----------------------'
-	install_livedown
+
+	install_livedown || {
+		echo -e '\e[31mAn error occured during the \e[1mLivedown\e[21m installation.\e[39m'
+	}
+
+	echo -e '\e[34mThe configuration has finish without error.\e[39m'
+	exit 0
 }
 
 function install_vim
@@ -179,15 +257,63 @@ function install_livedown
 # Main
 ##########################################
 
-#install_packages
-#echo '-----------------------'
-#install_vim
-#echo '-----------------------'
-#install_xmobar
-#echo '-----------------------'
-#install_xmonad
-#echo '-----------------------'
-#install_livedown
-full_install
+if [[ $@ = "" ]]
+then
+	usage
+	exit 0
+fi
 
-echo 'Installation finished.'
+parse_args $@
+
+if [ $INSTALL_PACKAGES -eq 1 ]
+then
+	install_packages || {
+		echo -e '\e[31mAn error occured during the \e[1mpackages\e[21m installation.\e[39m'
+		exit 1
+	}
+
+	echo '-----------------------'
+fi
+
+if [ $INSTALL_VIM -eq 1 ]
+then
+	install_vim || {
+		echo -e '\e[31mAn error occured during the \e[1mvim\e[21m configuration.\e[39m'
+		exit 1
+	}
+
+	echo '-----------------------'
+fi
+
+if [ $INSTALL_XMOBAR -eq 1 ]
+then
+	install_xmobar || {
+		echo -e '\e[31mAn error occured during the \e[1mXMobar\e[21m configuration.\e[39m'
+		exit 1
+	}
+
+	echo '-----------------------'
+fi
+
+if [ $INSTALL_XMONAD -eq 1 ]
+then
+	install_xmonad || {
+		echo -e '\e[31mAn error occured during the \e[1mXMonad\e[21m configuration.\e[39m'
+		exit 1
+	}
+
+	echo '-----------------------'
+fi
+
+if [ $INSTALL_LIVEDOWN -eq 1 ]
+then
+	install_livedown || {
+		echo -e '\e[31mAn error occured during the \e[1mLivedown\e[21m installation.\e[39m'
+	}
+
+	echo '-----------------------'
+fi
+	
+echo -e '\e[34mThe configuration has finish without error.\e[39m'
+
+exit 0
