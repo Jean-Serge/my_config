@@ -1,5 +1,6 @@
 syntax on
 set nu
+set autoindent
 
 " ===============================================================================================
 " Vundle configuration (see : https://github.com/VundleVim/Vundle.vim)
