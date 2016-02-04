@@ -5,22 +5,28 @@
 Here is my computer configuration. For this project, I aimed to build a light but fully operating system. 
 My computer run on ArchLinux but this should be portable on many Linux OS.
 
-At first I created this repo for 2 reasons :
+I created this repo for some reasons :
 + Keep my configuration on a remote platform (to get it back regardless of the computer from where I work)
-+ Improve my git skill on a long-time project (yes it is)
++ Improve my git skills on a long-time project (yes it is)
++ Improve my scripting skills
 
 If you want to advise me (about git or about any configuration), you are welcome. You can contact me on my github e-mail address.
 
 # Requirements
 
-As the **install.bash** script automatically install the needed packages, it will only work with the following distributions (others should manually install the specified packages) :
+## Distributions
+
+For the moment, all the root instructions of the **install.bash** script are ran with the *su* command so it will only work on certains distributions. I try to test it with others distributions than mine but I can be missing some bugs.
+
+Tested distributions
 + Debian
 + ArchLinux
 
-Send me a message if you want me to enable other distributions installation. 
+*Note : Even if the script works with Debian, it will not with Ubuntu due to the missing su command. The script should manage the sudo command in the future.*
 
-*Note that even if the script include Ubuntu specification, it will not work on it because of the missing commande **sudo**. In fact the script use the **su** command to install all the packages.
+## Language
 
+This script is made by and for a french. It is made to run with an *AZERTY* keyboard, especially the *XMonad* configuration that uses the *AZERTY* key-binding as shortcut.
 
 # Installation
 
@@ -33,27 +39,13 @@ Simply run
 
 # List of Applications used
 
-+ *vim*
-+ *XMonad*
-+ *XMobar*
-+ *dmenu*
-+ *livedown*
++ [*vim*](vim/README.md)
++ [*XMonad*](xmonad/README.md)
++ [*XMobar*](xmobar/README.md)
++ *livedown* (see further)
++ *XTerm* (see further)
 
 *(For further information, look at the repertory of this applications or in one of the next sections)*
-
-# XMonad
-
-*XMonad* is a lightly tiling Windows Manager (WM). Written in Haskell, it's very configurable but maybe not simplest. However you don't need to know Haskell to configure it (fortunately for me).
-
-## Applications used :
-+ XMobar
-+ dmenu (light app launcher bar)
-+ XTerm (see the XTerm part of the README)
-
-## Links :
-+ Official website : http://xmonad.org
-+ Archlinux wiki : https://wiki.archlinux.org/index.php/Xmonad
-+ French (but lightest) version : https://wiki.archlinux.fr/Xmonad
 
 # Livedown
 

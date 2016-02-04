@@ -18,8 +18,6 @@ My XMonad configuration is based on some other applications :
 + *Xterm*, the basic X terminal simulator (see the root **README.md** of the project)
 + *XMobar*, a status bar (see the **xmobar** directory for further information)
 
-
-
 ## Links
 + Official site : http://xmonad.org
 + Arch-wiki page : https://wiki.archlinux.org/index.php/Xmonad
