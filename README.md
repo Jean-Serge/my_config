@@ -26,7 +26,7 @@ Tested distributions
 
 ## Language
 
-This script is made by and for a french. It is made to run with an *AZERTY* keyboard, especially the *XMonad* configuration that uses the *AZERTY* key-binding as shortcut.
+This script is made by and for a french. It is made to run with an *AZERTY* keyboard, especially the *XMonad* configuration that uses *AZERTY* key-binding as shortcut.
 
 # Installation
 
@@ -36,16 +36,16 @@ Simply run
 
 	./install.bash
 
+You can either completely install my configuration (with the `--all` option) or specify which part of it you want to install (for example with the `--vim` option).
 
-# List of Applications used
+# Applications used
 
-+ [*vim*](vim/README.md)
-+ [*XMonad*](xmonad/README.md)
-+ [*XMobar*](xmobar/README.md)
-+ *livedown* (see further)
-+ *XTerm* (see further)
-
-*(For further information, look at the repertory of this applications or in one of the next sections)*
++ [*vim*](vim/README.md) as main text editor
++ [*XMonad*](xmonad/README.md) as Window Manager
++ [*XMobar*](xmobar/README.md) as Status Bar
++ *Livedown* (see further) as MarkDown previewer
++ *XTerm* (see further) a default Terminal
++ *DMenu* as launch bar
 
 # Livedown
 
@@ -53,34 +53,37 @@ Livedown is a tool for Markdown-file preview in browser. You just have to start 
 
 ## Installation
 
-+ Install *npm* with your package manager
-+ Install *livedown* : * **npm install -g livedown** *
+Before installing *Livedown* you must install *npm*, the *NodeJS* Package Manager. 
+
+	pacman -S --noconfirm npm
+	npm install -g livedown
 
 ## Example
-+ ***livedown start README.md --open --browser firefox***
-+ ***vim README.md***
+
+Using *Livedown* to write your **README.md** file and view it in *firefox*.
+
+	livedown start --open --browser firefox README.md
+	vim README.md
 
 ## Links
-+ npm website : https://www.npmjs.com/package/livedown
++ [NPM Website](https://www.npmjs.com/package/livedown)
++ [Livedown Github](https://github.com/shime/livedown)
 
 # XTerm
 
 XTerm is the (very light) default terminal emulator for *Xorg* Window System.
-I have choose it because it is configurable enough for me and I don't really see diference between it and other terminal emulator.
+I chose it because it is configurable enough for me and I don't really see diference between it and other terminal emulator.
 
 The XTerm configuration is directly made by passing parameters to the *Term* field in XMonad configuration.
   
-## Requirement
+## Installation
 
-You need (obviously) *xterm* 
-
-	# On ArchLinux
 	pacman -S xterm xorg-xrdb
 
 ## Configuration
 
 + Colors : 
-	+ white foreground
+	+ grey foreground
 	+ black background
 	
 + Font :
