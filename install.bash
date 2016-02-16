@@ -235,7 +235,13 @@ function install_xmonad
 	xmonad --recompile && xmonad --restart
 
 	cd ..
-	echo 'exec xmonad' >> $HOME/.xinitrc
+
+	# Checking if the xinitrc file is already configured for xmonad
+	grep 'exec xmonad' $HOME/.xinitrc
+	if [[ $? -eq 1 ]]
+	then
+		echo 'exec xmonad' >> $HOME/.xinitrc
+	fi
 	echo 'XMonad correctly configured.'
 }
 
