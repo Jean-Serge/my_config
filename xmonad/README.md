@@ -11,6 +11,7 @@
 + Adding the xmobar call to xmonad
 + Calling dmenu when pressing *Mod+p*
 + Changing the *switch-workspace* shortcut to bind it to my azerty keyboard (changing '1' to '&', '2' to 'é', ...)
++ Adding a shortcut *Mod+Shift+L* calling `xscreensaver-command --lock` to lock the screen 
 
 ## Applications
 My XMonad configuration is based on some other applications :
