@@ -1,6 +1,8 @@
 syntax on
 set nu
 set autoindent
+set tabstop=2
+set shiftwidth=2
 
 " ===============================================================================================
 " Vundle configuration (see : https://github.com/VundleVim/Vundle.vim)
