@@ -10,8 +10,11 @@
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers
+import XMonad.Layout.PerWorkspace
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Actions.SpawnOn
 
 import Data.Monoid
 import System.Exit
@@ -109,6 +112,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Expand the master area
     , ((modm,               xK_l     ), sendMessage Expand)
+
+    -- Lock the screen (call xscreensaver)
+    , ((modm .|. shiftMask, xK_l     ), spawn "xscreensaver-command --lock")
 
     -- Increment the number of windows in the master area
     , ((modm              , xK_comma ), sendMessage (IncMasterN 1))
@@ -210,8 +216,9 @@ myLayout = tiled ||| Mirror tiled ||| Full
 -- To match on the WM_NAME, you can use 'title' in the same way that
 -- 'className' and 'resource' are used below.
 --
-myManageHook = composeAll
-    [ className =? "MPlayer"        --> doFloat
+myManageHook = manageSpawn <+> composeAll
+    [ isFullscreen 									--> doFullFloat
+		, className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
@@ -251,7 +258,9 @@ myLogHook = return ()
 -- per-workspace layout choices.
 --
 -- By default, do nothing.
-myStartupHook = return ()
+myStartupHook = do
+			spawnOn "9" "thunderbird"
+			spawnOn "1" "firefox --restore"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
@@ -261,9 +270,7 @@ myStartupHook = return ()
 main = do 
 	xmproc <- spawnPipe "xmobar"
 	xmonad $ defaults
-        	{ manageHook = manageHook defaultConfig
-	        , layoutHook = avoidStruts  $  layoutHook defaultConfig
-        	, logHook = dynamicLogWithPP xmobarPP
+        	{ logHook = dynamicLogWithPP xmobarPP
                 	{ ppOutput = hPutStrLn xmproc
                 	, ppTitle = xmobarColor "green" "" . shorten 50
                 	}
