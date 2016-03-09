@@ -188,25 +188,6 @@ function install_vim
 	cp .vimrc $HOME/.vimrc
 	cp -r .vim $HOME/.vim
 
-	# Vundle Installation
-	wd=$PWD
-
-	cd $HOME/.vim/bundle
-
-	if [ ! -d Vundle.vim ]
-	then
-		git clone https://github.com/VundleVim/Vundle.vim.git ./Vundle.vim
-	else
-		cd Vundle.vim
-		git pull
-		cd ..
-	fi
-	
-	cd $wd
-	# Run Vim and install all plugins.
-	vim +PluginInstall +qall
-
-	cd ..
 	echo 'Vim correctly configured.'
 }
 
@@ -237,7 +218,7 @@ function install_xmonad
 	cd ..
 
 	# Checking if the xinitrc file is already configured for xmonad
-	grep 'exec xmonad' $HOME/.xinitrc
+	grep 'exec xmonad' $HOME/.xinitrc > /dev/null
 	if [[ $? -eq 1 ]]
 	then
 		echo 'exec xmonad' >> $HOME/.xinitrc
