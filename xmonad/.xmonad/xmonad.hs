@@ -10,6 +10,8 @@
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.ManageHelpers
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 
@@ -213,11 +215,8 @@ myLayout = tiled ||| Mirror tiled ||| Full
 -- To match on the WM_NAME, you can use 'title' in the same way that
 -- 'className' and 'resource' are used below.
 --
-myManageHook = composeAll
-    [ className =? "MPlayer"        --> doFloat
-    , className =? "Gimp"           --> doFloat
-    , resource  =? "desktop_window" --> doIgnore
-    , resource  =? "kdesktop"       --> doIgnore ]
+myManageHook = composeAll []
+--myManageHook = composeOne [isFullscreen -?> doFullFloat]
 
 ------------------------------------------------------------------------
 -- Event handling
@@ -230,7 +229,8 @@ myManageHook = composeAll
 --
 myEventHook = mconcat
 		[ docksEventHook
-		, handleEventHook defaultConfig ]
+		, handleEventHook defaultConfig
+                , fullscreenEventHook ]
 
 ------------------------------------------------------------------------
 -- Status bars and logging
@@ -264,8 +264,7 @@ myStartupHook = return ()
 main = do 
 	xmproc <- spawnPipe "xmobar"
 	xmonad $ defaults
-        	{ manageHook = manageHook defaultConfig
-	        , layoutHook = avoidStruts  $  layoutHook defaultConfig
+        	{ layoutHook = avoidStruts  $  layoutHook defaultConfig
         	, logHook = dynamicLogWithPP xmobarPP
                 	{ ppOutput = hPutStrLn xmproc
                 	, ppTitle = xmobarColor "green" "" . shorten 50
