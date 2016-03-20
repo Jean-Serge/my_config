@@ -188,6 +188,7 @@ function install_vim
 	cp .vimrc $HOME/.vimrc
 	cp -r .vim $HOME/.vim
 
+        cd ..
 	echo 'Vim correctly configured.'
 }
 
