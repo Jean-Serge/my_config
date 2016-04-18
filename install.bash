@@ -51,16 +51,6 @@ function archive
 ###
 #  Check if the specified command exists.
 ###
-#function exists_command
-#{
-#  command -v $1 >/dev/null
-#  if [ ! $? -eq 0 ]
-#  then
-#    exit 1
-#  fi
-#
-#  return 0
-#}
 
 function get_package_manager
 {
