@@ -2,11 +2,16 @@
 
 # TODO : check the location from where the script is launch (see Issue #1 on github)
 
+##########################################
+# Packages list
+##########################################
+
 X='xorg-server xorg-xinit'
 XTERM='xterm ttf-dejavu'
 XMONAD='xmonad xmonad-contrib dmenu xmobar'
 VIM='vim'
-OTHERS='npm git'
+BASE='npm git'
+
 
 ##########################################
 # Options
@@ -94,7 +99,7 @@ function parse_args
         exit 0
         ;;
       --no-install)
-        INSTALL_PACKAGES=1
+        INSTALL_PACKAGES=0
         ;;
       --vim)
         INSTALL_VIM=1
