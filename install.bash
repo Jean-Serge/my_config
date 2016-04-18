@@ -10,7 +10,7 @@ X='xorg-server xorg-xinit'
 XTERM='xterm ttf-dejavu'
 XMONAD='xmonad xmonad-contrib dmenu xmobar'
 VIM='vim'
-BASE='npm git'
+BASE='npm git curl'
 
 
 ##########################################
@@ -22,6 +22,7 @@ INSTALL_VIM=0
 INSTALL_XMOBAR=0
 INSTALL_XMONAD=0
 INSTALL_LIVEDOWN=0
+INSTALL_RUST=0
 
 
 ##########################################
@@ -107,7 +108,7 @@ function parse_args
         full_install
         ;;
       --rust)
-        INSTALL_RUST= 1
+        INSTALL_RUST=1
         ;;
       *)
         break
@@ -255,6 +256,19 @@ function install_livedown
     return 1
   fi
 }
+
+function install_rust
+{
+  echo -e 'Starting \e[34mRust\e[39m installation.'
+
+  # TODO : Add dependencies for rust (sudo, curl)
+  curl -sSf https://static.rust-lang.org/rustup.sh | sh
+  cargo install rustfmt
+
+  echo 'Rust correctly installed.'
+}
+
+
 ##########################################
 # Main
 ##########################################
@@ -314,6 +328,12 @@ then
   }
 
   echo '-----------------------'
+fi
+
+if [ $INSTALL_RUST -eq 1 ]
+then
+  install_rust ||
+    echo -e '\e[31mAn error occured during the \e[1mRust\e[21m installation.\e[39m'
 fi
 
 echo -e '\e[34mThe configuration has finish without error.\e[39m'
