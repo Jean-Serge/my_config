@@ -7,6 +7,7 @@ set softtabstop=2
 set expandtab
 
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+set list
 
 " ===============================================================================================
 " Vundle configuration (see : https://github.com/VundleVim/Vundle.vim)
