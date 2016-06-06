@@ -13,6 +13,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageHelpers
 import XMonad.Util.Run(spawnPipe)
+import XMonad.Util.Scratchpad
 import XMonad.Util.EZConfig(additionalKeys)
 
 import Data.Monoid
@@ -135,6 +136,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Run xmessage with a summary of the default keybindings (useful for beginners)
     , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
+    
+    -- Call Scratchpad
+    , ((0, xK_F12)			      , scratchpadSpawnActionTerminal "xterm")
     ]
     ++
 
@@ -215,8 +219,16 @@ myLayout = tiled ||| Mirror tiled ||| Full
 -- To match on the WM_NAME, you can use 'title' in the same way that
 -- 'className' and 'resource' are used below.
 --
-myManageHook = composeAll []
---myManageHook = composeOne [isFullscreen -?> doFullFloat]
+myManageHook = manageScratchPad
+
+-- Scratchpad management definition
+manageScratchPad :: ManageHook
+manageScratchPad = scratchpadManageHook (W.RationalRect l t w h)
+  where
+      h = 0.5     -- terminal height, 10%
+      w = 1       -- terminal width, 100%
+      t = h       -- distance from top edge, 90%
+      l = 1 - w   -- distance from left edge, 0%
 
 ------------------------------------------------------------------------
 -- Event handling
@@ -238,12 +250,6 @@ myEventHook = mconcat
 -- Perform an arbitrary action on each internal state change or X event.
 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
 --
---xmproc :: Handle
---xmproc = spawnPipe "xmobar"
---myLogHook = dynamicLogWithPP xmobarPP
---     	 	{ ppOutput = hPutStrLn xmproc
---               	, ppTitle = xmobarColor "green" "" . shorten 50
---               	}
 myLogHook = return ()
 
 ------------------------------------------------------------------------
