@@ -138,7 +138,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
     
     -- Call Scratchpad
-    , ((0, xK_F12)			      , scratchpadSpawnActionTerminal "xterm")
+    , ((0, xK_F12)			      , scratchpadSpawnActionTerminal "xterm -fa 'DejaVu Mono' -fs 13 -bg black -fg grey")
     ]
     ++
 
@@ -225,10 +225,10 @@ myManageHook = manageScratchPad
 manageScratchPad :: ManageHook
 manageScratchPad = scratchpadManageHook (W.RationalRect l t w h)
   where
-      h = 0.5     -- terminal height, 10%
-      w = 1       -- terminal width, 100%
-      t = h       -- distance from top edge, 90%
-      l = 1 - w   -- distance from left edge, 0%
+      h = 0.5     -- terminal height
+      w = 1       -- terminal width
+      t = 0       -- distance from top edge
+      l = 1 - w   -- distance from left edge
 
 ------------------------------------------------------------------------
 -- Event handling
